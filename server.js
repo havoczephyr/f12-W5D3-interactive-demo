@@ -1,0 +1,21 @@
+const express = require('express')
+const path = require('path')
+const cors = require('cors')
+
+const app = express()
+
+const students = ["Giovanni"];
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "/pulic/index.html"))
+})
+
+app.get("/api/students", () => {
+    res.status(200).send(students);
+})
+
+const port = process.env.PORT || 4545
+
+app.listen(port, () => {
+    console.log(`They're taking the Hobbits to ${port}`)
+})
